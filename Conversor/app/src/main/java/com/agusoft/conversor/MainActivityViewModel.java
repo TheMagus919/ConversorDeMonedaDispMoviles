@@ -3,6 +3,7 @@ package com.agusoft.conversor;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,28 +27,22 @@ public class MainActivityViewModel extends AndroidViewModel {
         }
         return mutableResultado;
     }
-
-    public void convertirDolar(String valor){
-        Double resultado = (Double) 0.00;
-        if(valor.length() == 0){
+    public void convertirDinero(String dolar, String euro, boolean dolarB, boolean euroB){
+        Double res = (double) 0;
+        if( dolarB && dolar.isEmpty()){
             Toast.makeText(context, "Porfavor ingresar un Valor.", Toast.LENGTH_SHORT).show();
-        }else{
-            resultado = Double.parseDouble(valor) * 0.92045;
+        }else if(dolarB && Integer.parseInt(dolar) > 0){
+            res = Double.parseDouble(dolar) * 0.92045;
             DecimalFormat df = new DecimalFormat("#.##");
-            resultado = Double.valueOf(df.format(resultado));
-        }
-        mutableResultado.setValue(resultado);
-    }
-
-    public void convertirEuro(String valor){
-        Double resultado = (Double) 0.00;
-        if(valor.length() == 0){
+            res = Double.valueOf(df.format(res));
+        }else if(euroB && euro.isEmpty()){
             Toast.makeText(context, "Porfavor ingresar un Valor.", Toast.LENGTH_SHORT).show();
-        }else{
-            resultado = Double.parseDouble(valor) * 1.08643;
+        } else if (euroB && Integer.parseInt(euro) > 0) {
+            res = Double.parseDouble(euro) * 1.08429;
             DecimalFormat df = new DecimalFormat("#.##");
-            resultado = Double.valueOf(df.format(resultado));
+            res = Double.valueOf(df.format(res));
         }
-        mutableResultado.setValue(resultado);
+        mutableResultado.setValue(res);
     }
 }
+

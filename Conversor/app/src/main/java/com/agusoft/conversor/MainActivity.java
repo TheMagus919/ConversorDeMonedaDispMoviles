@@ -27,35 +27,23 @@ public class MainActivity extends AppCompatActivity {
         binding.btConvertir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(binding.rbDolares.isChecked()){
-                    vm.convertirDolar(binding.etDolares.getText().toString());
-                }else{
-                    vm.convertirEuro(binding.etEuros.getText().toString());
-                }
+                vm.convertirDinero(binding.etDolares.getText().toString(),binding.etEuros.getText().toString(),binding.rbDolares.isChecked(),binding.rbEuros.isChecked());
             }
         });
 
         binding.rbDolares.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.rbEuros.setChecked(false);
                 binding.etEuros.setEnabled(false);
-                binding.etEuros.setText("");
-                binding.txResultado.setText("");
                 binding.etDolares.setEnabled(true);
-                binding.rbDolares.setChecked(true);
             }
         });
 
         binding.rbEuros.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.rbEuros.setChecked(true);
                 binding.etEuros.setEnabled(true);
-                binding.etDolares.setText("");
-                binding.txResultado.setText("");
                 binding.etDolares.setEnabled(false);
-                binding.rbDolares.setChecked(false);
             }
         });
     }
