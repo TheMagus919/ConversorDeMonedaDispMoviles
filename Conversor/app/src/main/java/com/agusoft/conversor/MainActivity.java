@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 binding.etEuros.setEnabled(false);
+                binding.etEuros.setText("");
                 binding.etDolares.setEnabled(true);
             }
         });
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 binding.etEuros.setEnabled(true);
+                binding.etDolares.setText("");
                 binding.etDolares.setEnabled(false);
             }
         });
